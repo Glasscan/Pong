@@ -1,5 +1,5 @@
 Basic pong game with the following features:
 
-I) Adjustable AI
-II) Adjustable Ball Speed
+I) Adjustable AI<br>
+II) Adjustable Ball Speed<br>
 III) Toggleable Ball Acceleration
