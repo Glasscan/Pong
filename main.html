@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Cats</title>
+	<meta charset="utf-8" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
+    <script src="pong.js"></script>
+    <script src="hand.minified-1.3.8.js"></script>
+    <link rel="stylesheet" href="main.css"></script>
+</head>
+
+<body>
+    <div id="arena">
+        <div id="score">
+            <h1>
+                <span id="playerScore">0</span> 
+                <span id="opponentScore">0</span>
+            </h1>
+        </div>
+
+        <div id="player"></div> <!-- paddles are 25x100px, ball is 20x20px-->
+        <div id="opponent"></div>
+        <div id="ball"></div>
+    </div>
+    <div class="instructions">
+        Control using W and S
+     </div>
+     <div class="instructions">Set AI Level
+        <button onclick="setAI(1)">1</button>
+        <button onclick="setAI(2)">2</button>
+        <button onclick="setAI(3)">3</button>
+        <button onclick="setAI(4)">4</button>
+        <button onclick="setAI(5)">5</button>
+    </div>
+    <div class="instructions">
+        Ball Speed
+        <button onclick="setSpeed(1)">1</button>
+        <button onclick="setSpeed(2)">2</button>
+        <button onclick="setSpeed(3)">3</button>
+        <button onclick="setSpeed(4)">4</button>
+        <button onclick="setSpeed(5)">5</button>
+    </div>
+    <div class="instructions">
+        Ball Acceleration
+        <button onclick="setAcceleration(1)">On</button>
+        <button onclick="setAcceleration(0)">Off</button>
+    </div>
+    <p>AI level : <span id="currentLevel">1 &nbsp</span> 
+    Ball Speed : <span id="currentSpeed">3 &nbsp</span>
+    Accleration : <span id="currentAcceleration">On</span> 
+    </p>
+
+
+
+
+</body>
+
+</html>

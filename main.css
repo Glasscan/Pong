@@ -1,0 +1,77 @@
+﻿@font-face {
+    font-family: 'PressStart2P';
+    src: url('PressStart2P.woff');
+}
+
+body {
+    height: 100%;
+    margin: 0px;
+
+}
+
+/* the image for the background is 1200x800 */
+#arena {
+    position: center;
+    background-image: url("sprites/bg.png");
+    background-repeat: no-repeat;
+    width: 1200px;
+    height: 800px;
+    overflow: hidden;
+}
+
+h1 { 
+	font-family: 'PressStart2P', 'Georgia', serif; 
+}
+
+#playerScore {
+    position: relative;
+    color: white;
+    left: 400px;
+    top: 5%;
+}
+
+#opponentScore {
+    position: relative;
+    color: white;
+    left: 750px;
+    top: 5%;
+}
+
+#player {
+    background-image: url("sprites/pad1.png");
+    width: 25px;
+    height: 100px;
+    position: absolute;
+}
+
+#opponent {
+    background-image: url("sprites/pad2.png");
+    width: 25px;
+    height: 100px;
+    position: absolute;
+}
+
+#ball {
+    background-image: url("sprites/ball.png");
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+.instructions{
+    margin-left: 1%;
+    font-family: 'PressStart2P', 'Georgia', serif;
+}
+
+button{
+    background-color: #A4A4A4;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: #BDBDBD;
+}
+
+button:active{
+    color: white;
+}
