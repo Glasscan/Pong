@@ -2,10 +2,12 @@
 var player, ball, opponent, ai;
 var distance; //amount each player moves
 var score;
-ballVelocity = [-.3, -.3]; //global to update speed
+var ballVelocity = [-.3, -.3]; //global to update speed
+var sound;
 
 $(document).ready(function () {
     lastUpdate = 0;
+    sound = SoundFX();
     ball = Ball();
     score = [0, 0];
     distance = 25; //1/4 of the paddle size
@@ -36,6 +38,7 @@ $(document).keydown(function (event) {
 $(document).on('ping:playerScored', function () {
     delete ball;
     score[0]++;
+    sound.playSound(4);
     $('#playerScore').text(score[0]);
     ball = Ball();
     ball.start();
@@ -44,6 +47,7 @@ $(document).on('ping:playerScored', function () {
 $(document).on('ping:opponentScored', function () {
     delete ball; //reset the ball
     score[1]++;
+    sound.playSound(4);
     $('#opponentScore').text(score[1]);
     ball = Ball();
     ball.start(); //reset the game
@@ -62,6 +66,7 @@ var Ball = function () {
     function move(t) {
 
         if (position[1] - 10 <= 0 || position[1] + 20 >= 790) { //bounce
+                sound.playSound(1);
                 velocity[1] = -velocity[1];
         }
         position[0] += velocity[0]*t;
@@ -94,6 +99,7 @@ var Ball = function () {
 
         var playerPosition = player.getPosition();
         if (position[0] <= 30 && position[1] >= playerPosition[1] - 10 && position[1] <= playerPosition[1] + 125) { //bounce off player
+            sound.playSound(3);
             velocity[0] += acceleration;
             velocity[0] = -velocity[0];
             acceleration = -acceleration;
@@ -101,6 +107,7 @@ var Ball = function () {
 
         var opponentPosition = opponent.getPosition();
         if (position[0] >= 1150 && position[1] >= opponentPosition[1] && position[1] <= opponentPosition[1] + 125) { //bounce off AI
+            sound.playSound(2);
             velocity[0] += acceleration;
             velocity[0] = -velocity[0];
             acceleration = -acceleration;
@@ -213,6 +220,48 @@ function AI(playerToControl) {
     return {
         update: update,
         SetAILevel: function(a) {AILevel = a},
+    }
+}
+
+function SoundFX() {
+    var muting = false;
+
+    function playSound(sfx) {
+        if (muting) { // return if muted
+            return;
+        }
+        switch(sfx){
+            case 1: {
+                document.getElementById("wallHit").play();
+                break;
+            }
+            case 2: {
+                document.getElementById("opponentHit").play();
+                break;
+            }
+            case 3: {
+                document.getElementById("playerHit").play();
+                break;
+            }
+            case 4: {
+                document.getElementById("someoneScored").play();
+                break;
+            }
+            default:
+                break;
+        }
+    }
+
+    return {
+        muting: muting,
+        playSound: playSound,
+        MuteOn: function () {
+            muting = true;
+            document.getElementById("currentSound").innerHTML = "Off";},
+        MuteOff: function () {
+            muting = false
+            document.getElementById("currentSound").innerHTML = "On"; //update the bottom line
+        },
     }
 }
 

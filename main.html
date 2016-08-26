@@ -1,7 +1,12 @@
 ﻿<!DOCTYPE html>
+<audio id="wallHit" src="sfx/pong1.mp3"></audio>
+<audio id="opponentHit" src="sfx/pong2.mp3"></audio>
+<audio id="playerHit" src="sfx/pong3.mp3"></audio>
+<audio id="someoneScored" src="sfx/pong4.mp3"></audio>
+
 <html>
 <head>
-    <title>Cats</title>
+    <title>Pong</title>
 	<meta charset="utf-8" />
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
     <script src="pong.js"></script>
@@ -9,9 +14,10 @@
     <link rel="stylesheet" href="main.css"></script>
 </head>
 
+
 <body>
     <div id="arena">
-        <div id="score">
+        <div id="score">s
             <h1>
                 <span id="playerScore">0</span> 
                 <span id="opponentScore">0</span>
@@ -23,7 +29,7 @@
         <div id="ball"></div>
     </div>
     <div class="instructions">
-        Control using W and S
+        <b>Control using W and S</b>
      </div>
      <div class="instructions">Set AI Level
         <button onclick="setAI(1)">1</button>
@@ -45,14 +51,18 @@
         <button onclick="setAcceleration(1)">On</button>
         <button onclick="setAcceleration(0)">Off</button>
     </div>
+    <div class="instructions">
+        Sound Effects
+        <button onclick="sound.MuteOff()">On</button>
+        <button onclick="sound.MuteOn()">Off</button>
+    </div>
     <p>AI level : <span id="currentLevel">1 &nbsp</span> 
     Ball Speed : <span id="currentSpeed">3 &nbsp</span>
-    Accleration : <span id="currentAcceleration">On</span> 
+    Accleration : <span id="currentAcceleration">On &nbsp</span>
+    Sound : <span id="currentSound">On</span>  
     </p>
-
-
-
 
 </body>
 
 </html>
+
